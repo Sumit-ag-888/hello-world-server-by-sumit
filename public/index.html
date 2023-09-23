@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit="hendlSubmit(); return false">
+        <input type="text" name="CityName" id = "CityName" placeholder="Enter city name">
+        <button type="submit">submit</button>
+    </form>
+
+    <div id="result"></div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+
+    function hendlSubmit(){
+        let city = document.getElementById("CityName").value;
+        console.log(city)
+     axios.get(`/weather/${city}`)
+  .then(function (response) {
+    console.log(response.data);
+    document.getElementById("result").innerHTML = `the tampratue is ${response.data.temp}`
+  })
+
+
+    }
+
+</script>
+
+</html>
